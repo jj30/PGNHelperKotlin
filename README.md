@@ -43,17 +43,17 @@ In "The Game of the Century", Fischer was 13 years old, playing against Byrne, w
 
 And, of course, the game ended in a most humbling defeat for Donald Byrne.
 
-![Mate](https://github.com/jj30/PGNHelperKotlin/blob/master/fischer_byrne_end_of_game.png)
+![Mate](https://github.com/jj30/PGNHelperKotlin/blob/master/screenshots/fischer_byrne_end_of_game.png)
 
 Here are some other screen shots. The search screen:
 
-![Search screen](https://github.com/jj30/PGNHelperKotlin/blob/master/device-2019-02-15-135141.png) 
+![Search screen](https://github.com/jj30/PGNHelperKotlin/blob/master/screenshots/device-2019-02-15-135141.png) 
 
 Games List:
 
-![List of games, as before.](https://github.com/jj30/PGNHelperKotlin/blob/master/device-2019-02-15-135113.png)
+![List of games, as before.](https://github.com/jj30/PGNHelperKotlin/blob/master/screenshots/device-2019-02-15-135113.png)
 
 Landscape view:
 
-![A typical landscape view](https://github.com/jj30/PGNHelperKotlin/blob/master/device-2019-02-15-135011.png)
+![A typical landscape view](https://github.com/jj30/PGNHelperKotlin/blob/master/screenshots/device-2019-02-15-135011.png)
 
