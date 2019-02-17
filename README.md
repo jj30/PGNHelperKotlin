@@ -39,7 +39,7 @@ The above games are interesting to chess players and can even be found by tagnam
 
 In "The Game of the Century", Fischer was 13 years old, playing against Byrne, who was 26. Watch this painful double-attack on Byrne's queen and rook, brought on by the discovered check from Fischer's bishop at c4:
 
-![Ouch!](https://github.com/jj30/PGNHelperKotlin/blob/master/fischer_byrne.png)
+![Ouch!](https://github.com/jj30/PGNHelperKotlin/blob/master/screenshots/fischer_byrne.png)
 
 And, of course, the game ended in a most humbling defeat for Donald Byrne.
 
