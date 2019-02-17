@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PGNHelper</string>
+    <string name="welcome">"Welcome to Chess PGN Base. \n\nThe app comes with ten popular games preloaded. (Search with no parameters for the list). The next version will allow loading from the cloud.
+        \nYou can put PGNs in your clipboard to use with other applications, or use the embedded viewer. Swipe left, right, up, or down, or use the buttons to navigate.\n\nReport bugs and bad PGNs to janjansz90210@gmail.com."</string>
+</resources>
