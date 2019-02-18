@@ -32,7 +32,7 @@ class PGNActivity: Activity() {
 
         database.use {
             fullGame = select("Games")
-                    .whereArgs("_id = {gameId}", "gameId" to gameId)
+                    .whereArgs("id = {gameId}", "gameId" to gameId)
                     .distinct()
                     .limit(1)
                     .exec { parseSingle(classParser()) }
