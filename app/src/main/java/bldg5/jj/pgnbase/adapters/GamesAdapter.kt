@@ -1,12 +1,12 @@
-package bldg5.jj.pgnhelper.adapters
+package bldg5.jj.pgnbase.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import bldg5.jj.pgnhelper.Game
-import bldg5.jj.pgnhelper.R
+import bldg5.jj.pgnbase.Game
+import bldg5.jj.pgnbase.R
 import kotlinx.android.synthetic.main.listed_game.view.*
 
 

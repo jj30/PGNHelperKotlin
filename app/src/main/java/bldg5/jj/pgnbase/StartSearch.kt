@@ -1,4 +1,4 @@
-package bldg5.jj.pgnhelper
+package bldg5.jj.pgnbase
 
 import android.app.Activity
 import android.content.Context
@@ -16,7 +16,7 @@ import org.jetbrains.anko.db.select
 class StartSearch: Activity() {
     // Access property for Context
     val Context.database: PGNDBHelper
-        get() = bldg5.jj.pgnhelper.PGNDBHelper.getInstance(applicationContext)
+        get() = bldg5.jj.pgnbase.PGNDBHelper.getInstance(applicationContext)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

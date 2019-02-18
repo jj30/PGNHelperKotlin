@@ -4,10 +4,10 @@
     android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="bldg5.jj.pgnhelper.PGNActivity"
+    tools:context="bldg5.jj.pgnbase.PGNActivity"
     tools:showIn="@layout/activity_pgn">
 
-    <view class="bldg5.jj.pgnhelper.CB"
+    <view class="bldg5.jj.pgnbase.CB"
         android:padding="20dp"
         android:id="@+id/boardShowing"
         android:layout_height="match_parent"

@@ -1,4 +1,4 @@
-package bldg5.jj.pgnhelper
+package bldg5.jj.pgnbase
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,8 +6,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.TableLayout
-import bldg5.jj.pgnhelper.common.Piece
-import bldg5.jj.pgnhelper.common.Board
+import bldg5.jj.pgnbase.common.Piece
+import bldg5.jj.pgnbase.common.Board
 import java.util.regex.Pattern
 
 

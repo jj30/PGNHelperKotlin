@@ -1,4 +1,4 @@
-package bldg5.jj.pgnhelper
+package bldg5.jj.pgnbase
 
 data class Game (
     val file: String = "",

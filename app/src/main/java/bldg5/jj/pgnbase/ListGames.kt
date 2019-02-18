@@ -1,12 +1,11 @@
-package bldg5.jj.pgnhelper
+package bldg5.jj.pgnbase
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import bldg5.jj.pgnhelper.adapters.GamesAdapter
+import bldg5.jj.pgnbase.adapters.GamesAdapter
 import kotlinx.android.synthetic.main.list_games.*
-import kotlinx.android.synthetic.main.listed_game.*
 import kotlinx.android.synthetic.main.listed_game.view.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.parseList
@@ -15,7 +14,7 @@ import org.jetbrains.anko.db.select
 class ListGames: Activity() {
     // Access property for Context
     val Context.database: PGNDBHelper
-        get() = bldg5.jj.pgnhelper.PGNDBHelper.getInstance(applicationContext)
+        get() = bldg5.jj.pgnbase.PGNDBHelper.getInstance(applicationContext)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

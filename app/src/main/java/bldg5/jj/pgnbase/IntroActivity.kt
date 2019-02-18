@@ -1,5 +1,4 @@
-/// TODO rename package bldg5.jj.pgnhelper --> pgnbase
-package bldg5.jj.pgnhelper
+package bldg5.jj.pgnbase
 
 import android.app.Activity
 import android.content.Intent

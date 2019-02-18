@@ -1,8 +1,8 @@
-package bldg5.jj.pgnhelper.common
+package bldg5.jj.pgnbase.common
 
 
 import android.util.Log
-import bldg5.jj.pgnhelper.R
+import bldg5.jj.pgnbase.R
 import java.util.*
 
 

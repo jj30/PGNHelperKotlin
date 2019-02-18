@@ -1,10 +1,8 @@
-package bldg5.jj.pgnhelper
+package bldg5.jj.pgnbase
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import org.jetbrains.anko.db.*
-import java.io.File
-import java.io.FileOutputStream
 
 class PGNDBHelper(val ctx: Context) : ManagedSQLiteOpenHelper(ctx, "PGNSDB", null, 1) {
     companion object {

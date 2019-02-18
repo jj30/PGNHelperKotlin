@@ -1,18 +1,15 @@
-package bldg5.jj.pgnhelper
+package bldg5.jj.pgnbase
 
 import android.app.Activity
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
-import android.view.Window
-import android.view.WindowManager
 import android.widget.TextView
 import android.widget.Toast
-import bldg5.jj.pgnhelper.adapters.OnSwipeTouchListener
+import bldg5.jj.pgnbase.adapters.OnSwipeTouchListener
 import kotlinx.android.synthetic.main.content_pgn.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.parseSingle
@@ -24,7 +21,7 @@ class PGNActivity: Activity() {
 
     // Access property for Context
     val Context.database: PGNDBHelper
-        get() = bldg5.jj.pgnhelper.PGNDBHelper.getInstance(applicationContext)
+        get() = bldg5.jj.pgnbase.PGNDBHelper.getInstance(applicationContext)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

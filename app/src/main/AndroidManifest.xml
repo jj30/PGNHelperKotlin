@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="bldg5.jj.pgnhelper">
+    package="bldg5.jj.pgnbase">
     <uses-feature android:name="android.hardware.usb.host" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon2"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/icon2"
         android:supportsRtl="true">
         <activity android:name=".IntroActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
