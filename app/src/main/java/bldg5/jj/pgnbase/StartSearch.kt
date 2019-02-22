@@ -1,22 +1,35 @@
 package bldg5.jj.pgnbase
 
 import android.app.Activity
+import android.app.PendingIntent
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
+import android.hardware.usb.UsbAccessory
+import android.hardware.usb.UsbDevice
+import android.hardware.usb.UsbManager
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import kotlinx.android.synthetic.main.activity_start_search.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.parseList
 import org.jetbrains.anko.db.select
+import com.github.mjdev.libaums.UsbMassStorageDevice
+import com.github.mjdev.libaums.fs.UsbFileInputStream
+import java.nio.charset.Charset
+
 
 class StartSearch: Activity() {
     // Access property for Context
     val Context.database: PGNDBHelper
         get() = bldg5.jj.pgnbase.PGNDBHelper.getInstance(applicationContext)
+
+    private val ACTION_USB_PERMISSION = "com.android.example.USB_PERMISSION"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +75,57 @@ class StartSearch: Activity() {
 
         btnFindGames.setOnClickListener {
             navToResults()
+        }
+
+        // register the broadcast receiver
+        val manager = getSystemService(Context.USB_SERVICE) as UsbManager
+        val permissionIntent = PendingIntent.getBroadcast(this, 0, Intent(ACTION_USB_PERMISSION), 0)
+        val filter = IntentFilter(ACTION_USB_PERMISSION)
+        registerReceiver(usbReceiver, filter)
+
+        for (dev in manager.deviceList)
+        {
+            // now ask for permission
+            manager.requestPermission(dev.value, permissionIntent)
+        }
+    }
+
+    // this is the broadcast receiver registered above.
+    private val usbReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            if (ACTION_USB_PERMISSION == intent.action) {
+                synchronized(this) {
+                    val device: UsbDevice? = intent.getParcelableExtra(UsbManager.EXTRA_DEVICE)
+
+                    if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
+                        val deviceList = UsbMassStorageDevice.getMassStorageDevices(this@StartSearch.applicationContext)
+
+                        for (deviceNext in deviceList) {
+                            // before interacting with a device you need to call init()!
+                            deviceNext.init()
+
+                            // Only uses the first partition on the device
+                            val currentFs = deviceNext.getPartitions().get(0).getFileSystem()
+                            val root = currentFs.rootDirectory
+
+                            val files = root.listFiles()
+                            for (file in files) {
+                                if (file.name.toLowerCase().contains(".pgn".toRegex())) {
+                                    val fileSource = UsbFileInputStream(file)
+                                    val buffer = ByteArray(currentFs.chunkSize)
+                                    fileSource.read(buffer)
+
+                                    val pgn = buffer.toString(Charset.defaultCharset())
+
+                                    this@StartSearch.database.addFromUSB(pgn)
+                                }
+                            }
+                        }
+                    } else {
+                        Log.d("JJJ", "permission denied for device $device")
+                    }
+                }
+            }
         }
     }
 

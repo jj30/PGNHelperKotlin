@@ -6,7 +6,7 @@ class Piece {
     private var y: Int = 0
     var xDestination: Int = 0
     var yDestination: Int = 0
-    private lateinit var type: Type // poss types R, N, B, Q, K, P
+    private var type: Type // poss types R, N, B, Q, K, P
 
     enum class Type(val code: String) {
         None(""),
