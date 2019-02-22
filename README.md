@@ -1,5 +1,7 @@
 # PGNHelperKotlin
-The PGNHelper, but translated into Kotlin. Now in the Play Store at https://play.google.com/store/apps/details?id=bldg5.jj.pgnbase
+The PGNHelper, but translated into Kotlin. 
+
+Now in the Play Store at https://play.google.com/store/apps/details?id=bldg5.jj.pgnbase
 
 The app comes with ten games preloaded, but will import any games you have on a mounted USB device. The PGN files must be in the root folder, and the device must not be self-powered.
 
