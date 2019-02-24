@@ -203,7 +203,8 @@ class PGNDBHelper(val ctx: Context) : ManagedSQLiteOpenHelper(ctx, "PGNSDB", nul
         db.dropTable("Games", true)
     }
 
-    fun addFromUSB(pgn: String) {
+    fun addFromUSB(pgn: String): Long {
+        var numGamesAdded = 0L
         val cr = "\n"
         val eof = "\r"
         val crRegex = cr.toRegex()
@@ -220,10 +221,34 @@ class PGNDBHelper(val ctx: Context) : ManagedSQLiteOpenHelper(ctx, "PGNSDB", nul
                     .replace("]", "")
                     .trim()
 
-            Log.i("JJ", key.code + " " + value)
-
             when (key) {
-                Game.PGNFileProperty.Event -> game.Event = value
+                Game.PGNFileProperty.Event -> {
+                    game.Event = value
+
+                    if (pgnBuilder != "") {
+                        // then we are beginning a new game,
+                        // let's flush out the old game.
+                        pgnBuilder = pgnBuilder.trim()
+                        game.PGN = pgnBuilder
+
+                        val numGamesInserted = getInstance(ctx).writableDatabase.insert("Games",
+                                "File" to game.file,
+                                "Event" to game.Event,
+                                "Site" to game.Site,
+                                "Date" to game.Date,
+                                "Round" to game.Round,
+                                "White" to game.White,
+                                "Black" to game.Black,
+                                "Result" to game.Result,
+                                "WhiteELO" to game.WhiteELO,
+                                "BlackELO" to game.BlackELO,
+                                "ECO" to game.ECO,
+                                "PGN" to game.PGN
+                        )
+
+                        numGamesAdded +=  if (numGamesInserted > 0) 1 else 0
+                    }
+                }
                 Game.PGNFileProperty.Site -> game.Site = value
                 Game.PGNFileProperty.EventDate -> game.Date = value
                 Game.PGNFileProperty.Round -> game.Round = value
@@ -240,11 +265,11 @@ class PGNDBHelper(val ctx: Context) : ManagedSQLiteOpenHelper(ctx, "PGNSDB", nul
             }
         }
 
+        // let's flush out the last game.
         pgnBuilder = pgnBuilder.trim()
         game.PGN = pgnBuilder
 
-
-        getInstance(ctx).writableDatabase.insert("Games",
+        val numGamesInserted = getInstance(ctx).writableDatabase.insert("Games",
                 "File" to game.file,
                 "Event" to game.Event,
                 "Site" to game.Site,
@@ -258,5 +283,8 @@ class PGNDBHelper(val ctx: Context) : ManagedSQLiteOpenHelper(ctx, "PGNSDB", nul
                 "ECO" to game.ECO,
                 "PGN" to game.PGN
         )
+
+        numGamesAdded += if (numGamesInserted > 0) 1 else 0
+        return numGamesAdded
     }
 }

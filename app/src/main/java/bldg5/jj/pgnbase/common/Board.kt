@@ -291,7 +291,6 @@ object Board {
             } catch (ex: Exception) {
                 Log.e(this.javaClass.toString(), ex.message)
             }
-
         }
 
         return currentBoard

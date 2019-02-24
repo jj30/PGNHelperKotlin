@@ -15,6 +15,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_start_search.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.parseList
@@ -98,6 +99,7 @@ class StartSearch: Activity() {
                     val device: UsbDevice? = intent.getParcelableExtra(UsbManager.EXTRA_DEVICE)
 
                     if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
+                        var numGamesAdded = 0L
                         val deviceList = UsbMassStorageDevice.getMassStorageDevices(this@StartSearch.applicationContext)
 
                         for (deviceNext in deviceList) {
@@ -117,12 +119,14 @@ class StartSearch: Activity() {
 
                                     val pgn = buffer.toString(Charset.defaultCharset())
 
-                                    this@StartSearch.database.addFromUSB(pgn)
+                                    numGamesAdded += this@StartSearch.database.addFromUSB(pgn)
                                 }
                             }
                         }
+
+                        Toast.makeText(context,"$numGamesAdded games were added to your local database.", Toast.LENGTH_LONG).show()
                     } else {
-                        Log.d("JJJ", "permission denied for device $device")
+                        Log.d(javaClass.name + ".usbReceiver", "permission denied for device $device")
                     }
                 }
             }

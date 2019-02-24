@@ -43,38 +43,41 @@ data class Game (
             }
 
             fun toFromLine(line: String): PGNFileProperty {
-                if (line.contains(PGNFileProperty.EventDate.code))
-                    return EventDate
+                with (line) {
+                    if (contains(PGNFileProperty.EventDate.code))
+                        return EventDate
 
-                if (line.contains(PGNFileProperty.Event.code))
-                    return Event
+                    if (contains(PGNFileProperty.Event.code))
+                        return Event
 
-                if (line.contains(PGNFileProperty.Site.code))
-                    return Site
+                    if (contains(PGNFileProperty.Site.code))
+                        return Site
 
-                if (line.contains(PGNFileProperty.Round.code))
-                    return Round
+                    if (contains(PGNFileProperty.Round.code))
+                        return Round
 
-                if (line.contains(PGNFileProperty.Result.code))
-                    return Result
+                    if (contains(PGNFileProperty.Result.code))
+                        return Result
 
-                if (line.contains(PGNFileProperty.WhiteElo.code))
-                    return WhiteElo
+                    if (contains(PGNFileProperty.WhiteElo.code))
+                        return WhiteElo
 
-                if (line.contains(PGNFileProperty.BlackElo.code))
-                    return BlackElo
+                    if (contains(PGNFileProperty.BlackElo.code))
+                        return BlackElo
 
-                if (line.contains(PGNFileProperty.White.code))
-                    return White
+                    if (contains(PGNFileProperty.White.code))
+                        return White
 
-                if (line.contains(PGNFileProperty.Black.code))
-                    return Black
+                    if (contains(PGNFileProperty.Black.code))
+                        return Black
 
-                if (line.contains(PGNFileProperty.ECO.code))
-                    return ECO
+                    if (contains(PGNFileProperty.ECO.code))
+                        return ECO
 
-                if (line.contains("[") && line.contains("]"))
-                    return Other
+                    if (contains("[") && line.contains("]"))
+                        return Other
+
+                }
 
                 return None
             }
@@ -89,8 +92,10 @@ data class Game (
 
         if (builder.length > 500)
             builder = builder.substring(0, Math.min(builder.length, 500))
-        else
-            builder = builder.substring(0, builder.length - 2)
+
+        if (builder.length > 2)
+            if (builder.substring( builder.length - 2, builder.length) == ", ")
+                builder = builder.substring(0, builder.length - 2)
 
         return builder
     }
