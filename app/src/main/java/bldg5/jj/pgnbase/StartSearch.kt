@@ -6,7 +6,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.hardware.usb.UsbAccessory
 import android.hardware.usb.UsbDevice
 import android.hardware.usb.UsbManager
 import android.os.Bundle
@@ -16,12 +15,12 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
+import com.github.mjdev.libaums.UsbMassStorageDevice
+import com.github.mjdev.libaums.fs.UsbFileInputStream
 import kotlinx.android.synthetic.main.activity_start_search.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.parseList
 import org.jetbrains.anko.db.select
-import com.github.mjdev.libaums.UsbMassStorageDevice
-import com.github.mjdev.libaums.fs.UsbFileInputStream
 import java.nio.charset.Charset
 
 

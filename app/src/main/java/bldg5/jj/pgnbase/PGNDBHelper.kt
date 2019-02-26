@@ -2,7 +2,6 @@ package bldg5.jj.pgnbase
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import android.util.Log
 import org.jetbrains.anko.db.*
 
 class PGNDBHelper(val ctx: Context) : ManagedSQLiteOpenHelper(ctx, "PGNSDB", null, 1) {

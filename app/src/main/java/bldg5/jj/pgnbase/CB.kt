@@ -6,8 +6,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.TableLayout
-import bldg5.jj.pgnbase.common.Piece
 import bldg5.jj.pgnbase.common.Board
+import bldg5.jj.pgnbase.common.Piece
 import java.util.regex.Pattern
 
 
